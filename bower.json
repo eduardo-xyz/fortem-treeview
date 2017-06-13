@@ -1,6 +1,7 @@
 {
   "name": "fortem-treeview",
   "description": "Custom Treeview for the Fortem company",
+  "license": "Apache-2.0",
   "main": "fortem-treeview.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0"
