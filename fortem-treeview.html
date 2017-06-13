@@ -1,0 +1,130 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="fortem-treeview-style.html">
+
+<dom-module id="fortem-treeview">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: [[itemColor]];
+      }
+    </style>
+    <slot></slot>
+  </template>
+
+  <script>
+    /**
+     * `fortem-treeview`
+     * Custom Treeview for the Fortem company
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FortemTreeview extends Polymer.Element {
+      static get is() { return 'fortem-treeview'; }
+      static get properties() {
+        return {
+          itemColor: {
+            type: String,
+            value: '#DDDDDD'
+          },
+          childItemColor: {
+            type: String,
+            value: '#EEEEEE'
+          },
+          childrenCollapsed: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+    }
+
+    window.customElements.define(FortemTreeview.is, FortemTreeview);
+  </script>
+</dom-module>
+
+<dom-module id="fortem-treeview-item">
+  <template>
+    <style include="fortem-treeview-style">
+      :host {
+        display: block;
+        overflow: hidden;
+        background-color: [[itemColor]];
+      }
+    </style>
+    <slot></slot>
+  </template>
+
+  <script>
+    /**
+     * `fortem-treeview-item`
+     * Custom Treeview Item for the Fortem company
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FortemTreeviewItem extends Polymer.Element {
+      static get is() { return 'fortem-treeview-item'; }
+      ready(){
+        super.ready();
+        this.attachEvents();
+        this.itemColor = this.parentElement.childItemColor? this.parentElement.childItemColor : this.parentElement.parentElement.childItemColor;
+        this.childItemColor = this.parentElement.itemColor? this.parentElement.itemColor : this.parentElement.parentElement.itemColor;
+        this.expanded = this.parentElement.childrenCollapsed? !this.parentElement.childrenCollapsed : this.parentElement.parentElement.childrenCollapsed ? !this.parentElement.parentElement.childrenCollapsed : this.expanded;
+      }
+      static get properties() {
+        return {
+          id: {
+            type: Number,
+            value: 0
+          },
+          trigger: String,
+          container: String,
+          itemColor: {
+            type: String,
+            value: '#DDDDDD'
+          },
+          childItemColor: {
+            type: String,
+            value: '#EEEEEE'
+          },
+          expanded: {
+            type: Boolean,
+            value : true,
+            notify: true,
+            reflectToAttribute: true
+          }
+        };
+      }
+
+      attachEvents(){
+        this.addEventListener('expanded-changed', e => this.toggle(e));
+        if (this.trigger) {
+          let triggerElement = this.children[this.trigger];
+          triggerElement.addEventListener('click', e => {
+            this.expanded = !this.expanded;
+          });
+        }
+      }
+
+      toggle(e){
+        if (this.container) {
+          let containerElement = this.children[this.container];
+          if (containerElement) {
+            containerElement.classList.toggle('expanded', this.expanded);
+            containerElement.classList.toggle('collapsed', !this.expanded);
+          }else {
+            console.warn('There\'s no container with id', this.container);
+          }
+        }else {
+          console.warn('A container element is required.');
+        }
+      }
+    }
+
+    window.customElements.define(FortemTreeviewItem.is, FortemTreeviewItem);
+  </script>
+</dom-module>

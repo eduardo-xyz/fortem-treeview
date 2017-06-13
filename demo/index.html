@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>fortem-treeview demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../fortem-treeview.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic fortem-treeview demo</h3>
+      <demo-snippet>
+        <template>
+          <fortem-treeview children-collapsed>
+            <fortem-treeview-item id="1" trigger="button1" container="container1">
+              <button type="button" name="button" id="button1">X</button>
+              <span>Row 1</span>
+              <div id="container1">
+                <fortem-treeview-item id="1.1">
+                  Row 1.1
+                </fortem-treeview-item>
+                <fortem-treeview-item id="1.2">
+                  Row 1.2
+                </fortem-treeview-item>
+              </div>
+            </fortem-treeview-item>
+            <fortem-treeview-item id="2">
+              Row 2
+            </fortem-treeview-item>
+            <fortem-treeview-item id="3" trigger="trigger3" container="cont3">
+              <a href="#" id="trigger3">X</a>
+              Row 3
+              <div id="cont3">
+                <fortem-treeview-item id="3.1" class="collapsed">
+                  Row 3.1
+                  <fortem-treeview-item id="3.1.1">
+                    Row 3.1.1
+                  </fortem-treeview-item>
+                  <fortem-treeview-item id="3.1.2">
+                    Row 3.1.2
+                  </fortem-treeview-item>
+                </fortem-treeview-item>
+              </div>
+            </fortem-treeview-item>
+          </fortem-treeview>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
