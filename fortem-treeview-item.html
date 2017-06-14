@@ -2,17 +2,17 @@
 
 <dom-module id="fortem-treeview-item">
   <template>
-    <style include="fortem-treeview-style">
-      :host {
-        display: block;
-        overflow: hidden;
-        background-color: [[itemColor]];
-      }
+    <style>
       ::slotted(.collapsed){
         height: 0;
       }
       ::slotted(.expanded){
         height: 100%;
+      }
+      :host {
+        display: block;
+        overflow: hidden;
+        background-color: [[itemColor]];
       }
     </style>
     <slot></slot>
