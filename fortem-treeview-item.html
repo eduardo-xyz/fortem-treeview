@@ -29,19 +29,8 @@
      */
     class FortemTreeviewItem extends Polymer.Element {
       static get is() { return 'fortem-treeview-item'; }
-      ready(){
-        super.ready();
-        this.attachEvents();
-        this.itemColor = this.parentElement.childItemColor? this.parentElement.childItemColor : this.parentElement.parentElement.childItemColor;
-        this.childItemColor = this.parentElement.itemColor? this.parentElement.itemColor : this.parentElement.parentElement.itemColor;
-        this.expanded = this.parentElement.childrenCollapsed? !this.parentElement.childrenCollapsed : this.parentElement.parentElement.childrenCollapsed ? !this.parentElement.parentElement.childrenCollapsed : this.expanded;
-      }
       static get properties() {
         return {
-          id: {
-            type: Number,
-            value: 0
-          },
           trigger: String,
           container: String,
           itemColor: {
@@ -59,6 +48,14 @@
             reflectToAttribute: true
           }
         };
+      }
+
+      ready(){
+        super.ready();
+        this.attachEvents();
+        this.itemColor = this.parentElement.childItemColor? this.parentElement.childItemColor : this.parentElement.parentElement.childItemColor;
+        this.childItemColor = this.parentElement.itemColor? this.parentElement.itemColor : this.parentElement.parentElement.itemColor;
+        this.expanded = this.parentElement.childrenCollapsed? !this.parentElement.childrenCollapsed : this.parentElement.parentElement.childrenCollapsed ? !this.parentElement.parentElement.childrenCollapsed : this.expanded;
       }
 
       attachEvents(){
