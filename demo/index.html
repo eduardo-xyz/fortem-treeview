@@ -24,31 +24,40 @@
       <demo-snippet>
         <template>
           <fortem-treeview children-collapsed>
-            <fortem-treeview-item id="1" trigger="button1" container="container1">
+            <fortem-treeview-item trigger="button1" container="container1">
               <button type="button" name="button" id="button1">X</button>
               <span>Row 1</span>
               <div id="container1">
-                <fortem-treeview-item id="1.1">
-                  Row 1.1
+                <fortem-treeview-item  trigger="button11" container="container11">
+                  <button type="button" name="button" id="button11">X</button>
+                  <span>Row 1.1</span>
+                  <div id="container11">
+                    <fortem-treeview-item>
+                      Row 1.1.1
+                    </fortem-treeview-item>
+                    <fortem-treeview-item>
+                      Row 1.1.2
+                    </fortem-treeview-item>
+                  </div>
                 </fortem-treeview-item>
-                <fortem-treeview-item id="1.2">
+                <fortem-treeview-item>
                   Row 1.2
                 </fortem-treeview-item>
               </div>
             </fortem-treeview-item>
-            <fortem-treeview-item id="2">
+            <fortem-treeview-item>
               Row 2
             </fortem-treeview-item>
-            <fortem-treeview-item id="3" trigger="trigger3" container="cont3">
+            <fortem-treeview-item trigger="trigger3" container="cont3">
               <a href="#" id="trigger3">X</a>
               Row 3
               <div id="cont3">
-                <fortem-treeview-item id="3.1" class="collapsed">
+                <fortem-treeview-item class="collapsed">
                   Row 3.1
-                  <fortem-treeview-item id="3.1.1">
+                  <fortem-treeview-item>
                     Row 3.1.1
                   </fortem-treeview-item>
-                  <fortem-treeview-item id="3.1.2">
+                  <fortem-treeview-item>
                     Row 3.1.2
                   </fortem-treeview-item>
                 </fortem-treeview-item>
